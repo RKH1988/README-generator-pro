@@ -3,7 +3,7 @@
 function renderLicenseBadge(license) {
   if (license !=='None of the Above/None') {
     return `
-![License: ${license}](https://img.shields.io/badge/license-${license}.svg)
+![License: ${license}](https://img.shields.io/badge/license-${license}-blue.svg)
     `;
     } else {
       return '';
@@ -20,29 +20,47 @@ function renderLicenseLink(license) {
   `;
   } else if (license ==='GPLv3') {
     return `
-  [${license}](https://choosealicense.com/licenses/gpl-3.0/)
+[${license}](https://choosealicense.com/licenses/gpl-3.0/)
     `;
   } else if (license ==='Apache_2.0') {
     return `
-  [${license}](https://choosealicense.com/licenses/apache-2.0/)
+[${license}](https://choosealicense.com/licenses/apache-2.0/)
     `;
   } else if (license ==='ISC') {
     return `
-  [${license}](https://choosealicense.com/licenses/isc/)
+[${license}](https://choosealicense.com/licenses/isc/)
     `;
   } else if (license ==='GPL_v2') {
     return `
-  [${license}](https://choosealicense.com/licenses/gpl-2.0/)
+[${license}](https://choosealicense.com/licenses/gpl-2.0/)
     `;
    } else {
     return '';
   }
-  }
+  };
 
 // TODO: Create a function that returns the license section of README
 // If there is no license, return an empty string
-function renderLicenseSection(license) {}
+function renderLicenseSection(license) {
+if (license !== 'None of the Above/None'){
+return `
+## License
+This project is licensed under the terms of the ${renderLicenseLink(license)} license.
+`;
+} else {
+  return '';
+}
+};
 
+
+function renderLicenseTOC(license){
+  if (license !== 'None of the Above/None'){
+  return `- [License](#license)
+  `;
+  } else {
+    return '';
+  }
+  };
 
 // TODO: Create a function to generate markdown for README
 
@@ -58,6 +76,7 @@ function generateMarkdown(data) {
   ## Table of Contents
   - [Installation](#installation) 
   - [Usage](#usage)
+  ${renderLicenseTOC(data.license)}
   - [Contributing](#contributing)
   - [Tests](#tests)
   - [Questions](#questions) 
@@ -67,7 +86,9 @@ function generateMarkdown(data) {
 
   ## Usage
   ${data.usage}
-   
+  
+  ${renderLicenseSection(data.license)}
+
   ## Contributing
   ${data.contributing}
 

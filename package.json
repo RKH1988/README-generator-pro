@@ -9,9 +9,9 @@
   "author": "RKH1988",
   "license": "ISC",
   "dependencies": {
-    "inquirer": "^8.2.4"
+    "inquirer": "^8.2.4",
+    "license-md": "^0.3.6"
   },
-  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/RKH1988/README-generator-pro.git"
